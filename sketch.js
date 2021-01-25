@@ -37,51 +37,69 @@ p3.shapeColor="blue";
 p4=createSprite(600,150,300,300);
 p4.shapeColor="green";
 //green
+
+}
+
+
+function draw(){
+ background(0);
+  drawSprites();
+  
+  stroke(0)
+rectMode(CENTER)
 for(i=25;i<300;i+=50){
-  block1=createSprite(325,i,50,50);
-  block2=createSprite(375,i,50,50);
-  block2.shapeColor="brown";
-  block3=createSprite(425,i,50,50);
+  fill("grey")
+  
+  block2=rect(375,i,50,50);
+  fill("brown")
+  // block2.shapeColor="brown";
+  block3=rect(425,i,50,50);
+  block1=rect(325,i,50,50);
   path.push(block1);
   path.push(block2);
   path.push(block3);
 }
 //yelow
 for(i=725;i>450;i-=50){
-  block1=createSprite(325,i,50,50);
-  block2=createSprite(375,i,50,50);
-  block2.shapeColor="brown";
-  block3=createSprite(425,i,50,50);
+  fill("grey")
+  
+  block2=rect(375,i,50,50);
+  fill("brown")
+  //block2.shapeColor="brown";
+  block3=rect(425,i,50,50);
+  block1=rect(325,i,50,50);
   path.push(block1);
   path.push(block2);
   path.push(block3);
 }
 //blue
 for(i=725;i>450;i-=50){
-  block1=createSprite(i,325,50,50);
-  block2=createSprite(i,375,50,50);
-  block2.shapeColor="brown";
-  block3=createSprite(i,425,50,50);
+  fill("grey")
+  
+  block2=rect(i,375,50,50);
+  fill("brown")
+  //block2.shapeColor="brown";
+  block3=rect(i,425,50,50);
+  block1=rect(i,325,50,50);
   path.push(block1);
   path.push(block2);
   path.push(block3);
 }
 //red
 for(i=25;i<300;i+=50){
-  block1=createSprite(i,325,50,50);
-  block2=createSprite(i,375,50,50);
-  block2.shapeColor="brown";
-  block3=createSprite(i,425,50,50);
+  fill("grey")
+  
+  block2=rect(i,375,50,50);
+  fill("brown")
+  block1=rect(i,325,50,50);
+  //lock2.shapeColor="brown";
+  block3=rect(i,425,50,50);
   path.push(block1);
   path.push(block2);
   path.push(block3);
 }
-}
-
-
-function draw(){
-  background(0);
-  drawSprites();
+fill("black")
+  text(mouseX+","+mouseY,mouseX,mouseY)
   // if(playerCount === 4){
   //   game.update(1);
   // }

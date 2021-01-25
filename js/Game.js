@@ -48,7 +48,7 @@ class Game {
     if(allPlayers !== undefined){
       background(rgb(198,135,103));
       image(track, 0,-displayHeight*4,displayWidth, displayHeight*5);
-      
+      this.createPath()
       //var display_position = 100;
       
       //index of the array
@@ -103,5 +103,34 @@ class Game {
   end(){
     console.log("Game Ended");
     console.log(player.rank);
+  }
+  createPath(){
+    var path1=[[75,325],[125,325],[175,325],[225,325],[275,325]]
+    var path2=[[325,225],[325,175],[325,125],[325,75],[325,25],[375,25]]
+    var path3=[[425,25]]
+    var path4=[[425,75],[425,125],[425,175],[425,225],[425,275]]
+    var path5=[[475,325],[525,325],[575,325],[625,325],[675,325],[725,325],[725,375]]
+    var path6=[[725,425]]
+    var path7=[[675,425],[625,425],[575,425],[525,425],[475,425]]
+    var path8=[[425,475],[425,525],[425,575],[425,625],[425,675],[425,725],[375,725]]
+    var path9=[[325,725]]
+    var path10=[[325,675],[325,625],[325,575],[325,525],[325,475]]
+    var path11=[[275,425],[225,425],[175,425],[125,425],[75,425],[25,425]]
+    var path12=[[25,375],[75,375],[125,375],[175,375],[225,375],[275,375]]
+var home=[[375,375]]
+var path13=[[25,325]]
+    if(player.index===1){
+      player.path=[]
+    }
+    if(player.index===2){
+      player.path=[]
+    }
+    if(player.index===3){
+      player.path=[]
+    }
+    if(player.index===4){
+
+      player.path=[]
+    }
   }
 }
