@@ -7,12 +7,12 @@ var distance = 0;
 var database;
 
 var form, player, game;
-var path=[];
+var path = [];
 var cars, car1, car2, car3, car4;
 
 var track, car1_img, car2_img, car3_img, car4_img;
 
-function preload(){
+function preload() {
   track = loadImage("../images/track.jpg");
   car1_img = loadImage("../images/car1.png");
   car2_img = loadImage("../images/car2.png");
@@ -22,92 +22,41 @@ function preload(){
 }
 //for loops to for each block
 //array path for each color
-function setup(){
+function setup() {
   canvas = createCanvas(750, 750);
-  // database = firebase.database();
-  // game = new Game();
-  // game.getState();
-  // game.start();
-p1=createSprite(150,150,300,300);
-p1.shapeColor="red";
-p2 =createSprite(150,600,300,300);
-p2.shapeColor="yellow";
-p3=createSprite(600,600,300,300);
-p3.shapeColor="blue";
-p4=createSprite(600,150,300,300);
-p4.shapeColor="green";
-//green
+  database = firebase.database();
+  game = new Game();
+
+  game.getState();
+  game.start();
+  p1 = createSprite(150, 150, 300, 300);
+  p1.shapeColor = "red";
+  p2 = createSprite(150, 600, 300, 300);
+  p2.shapeColor = "yellow";
+  p3 = createSprite(600, 600, 300, 300);
+  p3.shapeColor = "blue";
+  p4 = createSprite(600, 150, 300, 300);
+  p4.shapeColor = "green";
+  //green
 
 }
 
 
-function draw(){
- background(0);
+function draw() {
+  background(0);
   drawSprites();
-  
-  stroke(0)
-rectMode(CENTER)
-for(i=25;i<300;i+=50){
-  fill("grey")
-  
-  block2=rect(375,i,50,50);
-  fill("brown")
-  // block2.shapeColor="brown";
-  block3=rect(425,i,50,50);
-  block1=rect(325,i,50,50);
-  path.push(block1);
-  path.push(block2);
-  path.push(block3);
-}
-//yelow
-for(i=725;i>450;i-=50){
-  fill("grey")
-  
-  block2=rect(375,i,50,50);
-  fill("brown")
-  //block2.shapeColor="brown";
-  block3=rect(425,i,50,50);
-  block1=rect(325,i,50,50);
-  path.push(block1);
-  path.push(block2);
-  path.push(block3);
-}
-//blue
-for(i=725;i>450;i-=50){
-  fill("grey")
-  
-  block2=rect(i,375,50,50);
-  fill("brown")
-  //block2.shapeColor="brown";
-  block3=rect(i,425,50,50);
-  block1=rect(i,325,50,50);
-  path.push(block1);
-  path.push(block2);
-  path.push(block3);
-}
-//red
-for(i=25;i<300;i+=50){
-  fill("grey")
-  
-  block2=rect(i,375,50,50);
-  fill("brown")
-  block1=rect(i,325,50,50);
-  //lock2.shapeColor="brown";
-  block3=rect(i,425,50,50);
-  path.push(block1);
-  path.push(block2);
-  path.push(block3);
-}
-fill("black")
-  text(mouseX+","+mouseY,mouseX,mouseY)
-  // if(playerCount === 4){
-  //   game.update(1);
-  // }
-  // if(gameState === 1){
-  //   clear();
-  //   game.play();
-  // }
-  // if(gameState === 2){
-  //   game.end();
-  // }
+
+
+
+  text(mouseX + "," + mouseY, mouseX, mouseY)
+  if (playerCount === 4) {
+    game.update(1);
+  }
+  if (gameState === 1) {
+    clear();
+    game.play();
+  }
+  if (gameState === 2) {
+    game.end();
+  }
 }
