@@ -26,6 +26,15 @@ class Form {
       this.input.hide();
       this.button.hide();
       player.name = this.input.value();
+      player.createPath();
+      player.peg1.x=player.path[0][0]
+      player.peg1.y=player.path[0][1]
+      player.peg2.x=player.path[0][0]
+      player.peg2.y=player.path[0][1]
+      player.peg3.x=player.path[0][0]
+      player.peg3.y=player.path[0][1]
+      player.peg4.x=player.path[0][0]
+      player.peg4.y=player.path[0][1]
       playerCount+=1;
       player.index = playerCount;
       player.update();
