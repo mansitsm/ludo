@@ -5,111 +5,84 @@ var playerCount;
 var allPlayers;
 var distance = 0;
 var database;
-
+var playerColor = "";
+var turn = 1;
 var form, player, game;
 var path = [];
-var cars, car1, car2, car3, car4;
-
+var p11,
+  p12,
+  p13,
+  p14,
+  p21,
+  p22,
+  p23,
+  p24,
+  p31,
+  p32,
+  p33,
+  p34,
+  p41,
+  p42,
+  p43,
+  p44,
+  players;
+var homeSprite;
 var track, car1_img, car2_img, car3_img, car4_img;
-
-function preload() {
-  track = loadImage("../images/track.jpg");
-  car1_img = loadImage("../images/car1.png");
-  car2_img = loadImage("../images/car2.png");
-  car3_img = loadImage("../images/car3.png");
-  car4_img = loadImage("../images/car4.png");
-  ground = loadImage("../images/ground.png");
-}
+var playState = "wait";
+var lastRoll = 0;
+var selectedpeg = "";
+function preload() {}
 //for loops to for each block
 //array path for each color
 function setup() {
-  canvas = createCanvas(750, 750);
+  canvas = createCanvas(1100, 750);
   database = firebase.database();
-  // game = new Game();
+  game = new Game();
 
-  // game.getState();
-  // game.start();
-  p1 = createSprite(150, 150, 300, 300);
-  p1.shapeColor = "red";
-  p2 = createSprite(150, 600, 300, 300);
-  p2.shapeColor = "yellow";
-  p3 = createSprite(600, 600, 300, 300);
-  p3.shapeColor = "blue";
-  p4 = createSprite(600, 150, 300, 300);
-  p4.shapeColor = "green";
+  game.getState();
+  game.start();
   //green
-
 }
-
 
 function draw() {
-  background(0);
-  
-  drawSprites();
-  
-  squares();
-  fill("black")
-  text(mouseX + "," + mouseY, mouseX, mouseY)
+  background(126);
 
-
- 
-  // if (playerCount === 4) {
-  //   game.update(1);
-  // }
-  // if (gameState === 1) {
-  //   clear();
-   //game.play();
-  // }
-  // if (gameState === 2) {
-  //   game.end();
-  // }
-}
-  function squares() {
-  stroke(0)
-  rectMode(CENTER)
-  for (var i = 25; i < 300; i += 50) {
-    fill("grey")
-
-    var block2 = rect(375, i, 50, 50);
-    fill("brown")
-    // block2.shapeColor="brown";
-    var block3 = rect(425, i, 50, 50);
-    var block1 = rect(325, i, 50, 50);
-
+  if (playerCount === 4) {
+    game.update(1);
   }
-  //yelow
-  for (var i = 725; i > 450; i -= 50) {
-    fill("grey")
-
-    var block2 = rect(375, i, 50, 50);
-    fill("brown")
-    //block2.shapeColor="brown";
-    var block3 = rect(425, i, 50, 50);
-    var block1 = rect(325, i, 50, 50);
-
+  if (gameState === 1) {
+    clear();
+    game.play();
   }
-  //blue
-  for (var i = 725; i > 450; i -= 50) {
-    fill("grey")
-
-    var block2 = rect(i, 375, 50, 50);
-    fill("brown")
-    //block2.shapeColor="brown";
-    var block3 = rect(i, 425, 50, 50);
-    var block1 = rect(i, 325, 50, 50);
-
-  }
-  //red
-  for (var i = 25; i < 300; i += 50) {
-    fill("grey")
-
-    var block2 = rect(i, 375, 50, 50);
-    fill("brown")
-    var block1 = rect(i, 325, 50, 50);
-    //lock2.shapeColor="brown";
-    var block3 = rect(i, 425, 50, 50);
-  
+  if (gameState === 2) {
+    game.end();
   }
 }
 
+function mouseClicked() {
+  if (
+    homeSprite.isClicked() &&
+    (playState === "roll" ||
+      playState === "rollagain" ||
+      playState === "pegtaken")
+  ) {
+    var num = Math.round(random(1, 6));
+    player.diceSum.push(num);
 
+    game.updateLastRoll(player.diceSum);
+
+    playState = "rolled";
+    game.play();
+  }
+
+  for (var i = 0; i < 4; i++) {
+    if (player.pegs[i].isClicked() && playState === "selectpeg") {
+      selectedpeg = player.pegs[i];
+      playState = "move";
+      console.log(selectedpeg + ", " + i);
+      game.play();
+    }
+  }
+
+  console.log(playState);
+}
