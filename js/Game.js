@@ -313,7 +313,14 @@ class Game {
           800,
           400
         );
-
+        var newButton =createButton("New Game")
+        newButton.position(displayWidth/2,200)
+        newButton.mousePressed(()=>{
+          player.updateCount(0);
+          game.update(0);
+          location.reload();
+        });
+        
         for (var i = 1; i < 5; i++) {
           var pegindex = "peg" + i;
           players[index - 1].x = allPlayers[plr][pegindex].x;
@@ -322,7 +329,7 @@ class Game {
       }
     }
 
-    this.playerTurn();
+    //this.playerTurn();
   }
   squares() {
     stroke(0);

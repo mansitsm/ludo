@@ -69,8 +69,8 @@ class Form {
 
     this.reset.mousePressed(() => {
       player.updateCount(0);
+      //gameState = 2;
       game.update(0);
-      Player.updateCarsAtEnd(0);
       game.updateTurn(1);
       game.updateLastRoll(0);
     });

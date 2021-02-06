@@ -9,22 +9,8 @@ var playerColor = "";
 var turn = 1;
 var form, player, game;
 var path = [];
-var p11,
-  p12,
-  p13,
-  p14,
-  p21,
-  p22,
-  p23,
-  p24,
-  p31,
-  p32,
-  p33,
-  p34,
-  p41,
-  p42,
-  p43,
-  p44,
+var p11,p12,  p13,  p14,  p21,  p22,  p23,  p24,
+  p31,  p32,  p33,  p34,  p41,  p42,  p43,  p44,
   players;
 var homeSprite;
 var track, car1_img, car2_img, car3_img, car4_img;
